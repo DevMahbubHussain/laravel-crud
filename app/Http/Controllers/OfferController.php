@@ -55,7 +55,10 @@ class OfferController extends Controller
 
         if (Gate::allows('create', Offer::class)) {
             // Authorization passed
-            $offerService->store($request->validated());
+            $offerService->store(
+                $request->validated(),
+                $request->hasFile('image') ? $request->file('image') : null
+            );
             return redirect()->back()->with(['success' => 'offer created']);
         } else {
             // Authorization failed

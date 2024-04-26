@@ -65,7 +65,8 @@
                                 <div class="flex flex-col image-preview">
                                     <label class="leading-loose">Image</label>
                                     <div class="flex items-center justify-center p-4">
-                                        <img class="w-96 h-72 object-cover rounded-3xl" src="" alt="">
+                                        <img class="w-96 h-72 object-cover rounded-3xl"
+                                            src="{{ asset(\App\Models\Offer::PLACEHOLDER_IMAGE_PATH) }}" alt="">
                                     </div>
                                     <input name="image" type="file"
                                         class="image-upload-input px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
@@ -106,6 +107,7 @@
 @endsection
 
 @section('script')
+    @include('layouts.scripts.image-upload-preview-script')
     <script>
         $(document).ready(function() {
             new TomSelect("#select-category", {

@@ -15,9 +15,21 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @if (auth()->user()->isAdmin())
+                        <x-nav-link :href="route('offers.index')" :active="request()->routeIs('offers.index')">
+                            {{ __('Offers') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('offers.my')" :active="request()->routeIs('offers.my')">
+                            {{ __('My Offers') }}
+                        </x-nav-link>
+                    @endif
+
                     <x-nav-link :href="route('offers.create')" :active="request()->routeIs('offers.create')">
-                        {{ __('Offers') }}
+                        {{ __('Create Offers') }}
                     </x-nav-link>
+
                 </div>
             </div>
 
